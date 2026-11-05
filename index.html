@@ -29,7 +29,7 @@
             overflow: hidden;
             background-color: #022c22;
             width: 100vw;
-            height: 100vh;
+            height: 100dvh;
             margin: 0;
             padding: 0;
         }
@@ -59,7 +59,9 @@
         }
 
         #hud-layer {
-            padding-bottom: calc(1.5rem + env(safe-area-inset-bottom, 20px));
+            height: 100dvh;
+            box-sizing: border-box;
+            padding-bottom: calc(2.5rem + env(safe-area-inset-bottom, 24px));
         }
 
         @keyframes pulse-btn {
@@ -84,7 +86,7 @@
                 <i class="fa-solid fa-tree"></i>
             </div>
             <h1 class="text-3xl font-black text-amber-400 mb-2 tracking-wide drop-shadow-md">Jungle 3D Board</h1>
-            <p class="text-sm text-emerald-100 mb-6 leading-relaxed">Step into the deep forest! Slither past 3D snakes, climb wooden ladders, and roll the single 3D die to reach tile 100[span_0](start_span)[span_0](end_span)!</p>
+            <p class="text-sm text-emerald-100 mb-6 leading-relaxed">Step into the deep forest! Slither past 3D snakes, climb wooden ladders, and roll the single 3D die to reach tile 100[span_1](start_span)[span_1](end_span)!</p>
             
             <button id="btn-start-game" class="w-full bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-600 hover:from-amber-400 hover:to-yellow-400 text-emerald-950 font-black py-4 rounded-2xl shadow-2xl transition-all text-lg uppercase tracking-wider border border-amber-300">
                 Enter Jungle Game
@@ -177,7 +179,7 @@
                 <i class="fa-solid fa-trophy"></i>
             </div>
             <h2 id="winner-title" class="text-2xl font-black text-amber-300 mb-2 tracking-wide">PLAYER 1 WINS!</h2>
-            <p class="text-xs text-emerald-100 mb-6">Conquered the jungle and reached Tile 100[span_1](start_span)[span_1](end_span)!</p>
+            <p class="text-xs text-emerald-100 mb-6">Conquered the jungle and reached Tile 100[span_2](start_span)[span_2](end_span)!</p>
             <button id="btn-restart-game" class="w-full bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-emerald-950 font-black py-3.5 rounded-xl shadow-lg transition-all text-sm uppercase tracking-wider border border-emerald-300">
                 Play Again
             </button>
