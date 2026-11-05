@@ -58,6 +58,10 @@
             transform: translateY(1px);
         }
 
+        #hud-layer {
+            padding-bottom: calc(1.5rem + env(safe-area-inset-bottom, 20px));
+        }
+
         @keyframes pulse-btn {
             0%, 100% { box-shadow: 0 0 15px rgba(245, 158, 11, 0.5); transform: scale(1); }
             50% { box-shadow: 0 0 28px rgba(245, 158, 11, 0.9); transform: scale(1.04); }
@@ -80,7 +84,7 @@
                 <i class="fa-solid fa-tree"></i>
             </div>
             <h1 class="text-3xl font-black text-amber-400 mb-2 tracking-wide drop-shadow-md">Jungle 3D Board</h1>
-            <p class="text-sm text-emerald-100 mb-6 leading-relaxed">Step into the deep forest! Slither past 3D snakes, climb wooden ladders, and roll the single 3D die to reach tile 100[span_2](start_span)[span_2](end_span)!</p>
+            <p class="text-sm text-emerald-100 mb-6 leading-relaxed">Step into the deep forest! Slither past 3D snakes, climb wooden ladders, and roll the single 3D die to reach tile 100[span_0](start_span)[span_0](end_span)!</p>
             
             <button id="btn-start-game" class="w-full bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-600 hover:from-amber-400 hover:to-yellow-400 text-emerald-950 font-black py-4 rounded-2xl shadow-2xl transition-all text-lg uppercase tracking-wider border border-amber-300">
                 Enter Jungle Game
@@ -173,7 +177,7 @@
                 <i class="fa-solid fa-trophy"></i>
             </div>
             <h2 id="winner-title" class="text-2xl font-black text-amber-300 mb-2 tracking-wide">PLAYER 1 WINS!</h2>
-            <p class="text-xs text-emerald-100 mb-6">Conquered the jungle and reached Tile 100[span_3](start_span)[span_3](end_span)!</p>
+            <p class="text-xs text-emerald-100 mb-6">Conquered the jungle and reached Tile 100[span_1](start_span)[span_1](end_span)!</p>
             <button id="btn-restart-game" class="w-full bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-emerald-950 font-black py-3.5 rounded-xl shadow-lg transition-all text-sm uppercase tracking-wider border border-emerald-300">
                 Play Again
             </button>
@@ -412,7 +416,7 @@
             }
         }
 
-        // --- BUILD DENSE JUNGLE SCENERY (BACKGROUND & SIDES ONLY) ---
+        // --- BUILD JUNGLE SCENERY (BACKGROUND & SIDES ONLY) ---
         function buildJungleScenery() {
             const treeGroup = new THREE.Group();
             const trunkMat = new THREE.MeshStandardMaterial({ color: 0x451a03, roughness: 0.8 });
@@ -421,7 +425,6 @@
             const darkLeavesMat = new THREE.MeshStandardMaterial({ color: 0x022c22, roughness: 0.6 });
 
             const positions = [];
-            // Generate dense forest along sides and back, avoiding camera foreground (z > 10.5)
             for (let x = -20; x <= 20; x += 1.6) {
                 for (let z = -20; z <= 10.5; z += 1.6) {
                     const isSide = Math.abs(x) >= 11.2;
@@ -437,7 +440,6 @@
 
             positions.forEach(([x, z]) => {
                 const singleTree = new THREE.Group();
-                // Moderate tree scale so foliage remains crisp without obscuring board perspective
                 const h = 1.8 + Math.random() * 1.8;
 
                 const trunkGeo = new THREE.CylinderGeometry(0.18, 0.3, h, 6);
@@ -494,7 +496,6 @@
         }
 
         function buildRainClouds() {
-            // Cloud placements shifted back to frame the top & side boundaries naturally
             const cloudPositions = [
                 { x: -14, z: -12, y: 8.5 },
                 { x: 14, z: -10, y: 9.0 },
